@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include allyhomes *.css
+recursive-include allyhomes *.csv
+recursive-include allyhomes *.html
+recursive-include allyhomes *.ico
+recursive-include allyhomes *.js
+recursive-include allyhomes *.json
+recursive-include allyhomes *.md
+recursive-include allyhomes *.png
+recursive-include allyhomes *.py
+recursive-include allyhomes *.svg
+recursive-include allyhomes *.txt
+recursive-exclude allyhomes *.pyc
