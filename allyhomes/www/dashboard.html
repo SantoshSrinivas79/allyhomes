@@ -11,6 +11,7 @@
 <!--Sylesheets and JavaScript files to be included-->
 <link href="/assets/allyhomes/css/fullcalendar.css" rel="stylesheet" />
 <link href="/assets/allyhomes/css/fullcalendar.print.css" rel="stylesheet" media="print" />
+<link href="/assets/allyhomes/css/dashboard.css" rel="stylesheet" media="print" />
 <script src="/assets/allyhomes/js/moment.min.js"></script>
 <script src="/assets/allyhomes/js/jquery.min.js"></script>  
 <script src="/assets/allyhomes/js/fullcalendar.min.js"></script>
@@ -18,43 +19,10 @@
 <script>
 	var $j = jQuery.noConflict();
 $j(document).ready(function() {
-		
-/*	var obj=[
-		{title: 'All Day Event',start: '2016-09-02'},
-		{title: 'Lunch',start: '2016-09-12T12:00:00'},
-		{title: 'Birthday Party',start: '2016-12-13T07:00:00'}
-	];
+	var date = new Date(), year = date.getFullYear(), month = date.getMonth();
+	var firstDay = new Date(year, month, 1);
+	var lastDay = new Date(year, month + 1, 0);
 
-	var my_events=[];
-	
-	var myobj=function(start, end, timezone, callback) {
-        frappe.call({
-			type: "POST",
-			method: "allyhomes.www.dashboard.get_events",
-			args: {                
-                start: "2016-08-31",
-                end: "2016-09-31"
-            },
-            callback: function(r) {
-				if(r.message){
-			//		my_events = [];
-			console.log("=====================================================================");
-			console.log(end.unix());
-					$.each(r.message,function(i,currItem) {
-						my_events.push({
-							title: currItem['title'],
-							start: currItem['start'] // will be parsed
-						});
-					});
-				}
-				else
-				{
-				}
-			}
-		});
-	}
-	*/
-//	alert(my_events);
 	
 	$j('#calendar').fullCalendar({        
 		header: {
@@ -67,19 +35,22 @@ $j(document).ready(function() {
 		eventLimit: true, // allow "more" link when too many events
 		events: function(start, end, timezone, callback) {
 			$.ajax({
-				url: '/jsonfeed.py',
-				dataType: 'xml',
+				method: 'GET',
+				url: '/',
+				dataType: 'json',
+
 				data: {
+					cmd: "allyhomes.www.jsonfeed.get_events",
 					// our hypothetical feed requires UNIX timestamps
-					start: start.unix(),
-					end: end.unix()
+					start: firstDay,
+					end: lastDay
 				},
 				success: function(doc) {
 					var events = [];
-					$(doc).find('event').each(function() {
+					$(doc.message).each(function() { console.log('this',$(this)[0].title);
 						events.push({
-							title: $(this).attr('title'),
-							start: $(this).attr('start') // will be parsed
+							title: $(this)[0].title,
+							start: $(this)[0].start// will be parsed
 						});
 					});
 					callback(events);
@@ -151,6 +122,11 @@ $j(document).ready(function() {
 </script>
 <!--Styling for calendar-->
 <style>
+#page-dashboard{
+    max-width: none !important;
+}
+#page-dashboard .container-fluid{padding:0px;}
+#calendar .fc-view-container{background-color: #F0F8FF;}
 body {
 	margin: 5px 5px;
 	padding: 0;
@@ -200,7 +176,7 @@ body {
         	<div class="col-sm-2">	
 				<div class="panel panel-default">							
 				<table class="table table-hover">
-						<caption>Subs Available</caption>
+						<caption>SUBS AVAILABLE</caption>
 						<thead>
 						 	<tr>
 								<th>Name</th>														
