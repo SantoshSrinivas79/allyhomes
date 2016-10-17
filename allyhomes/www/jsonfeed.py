@@ -14,6 +14,7 @@ import json
 
 @frappe.whitelist()
 def get_events(start, end, filters=None):
+	no_cache = True
 	'''data = {
 	   'title' : 'ammmittthhhhhhhhaaaaaaa',
 	   'start' : '2016-09-11'

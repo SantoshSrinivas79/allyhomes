@@ -18,7 +18,7 @@
 
 <script>
 	var $j = jQuery.noConflict();
-$j(document).ready(function() {
+	$j(document).ready(function() {
 	var date = new Date(), year = date.getFullYear(), month = date.getMonth();
 	var firstDay = new Date(year, month, 1);
 	var lastDay = new Date(year, month + 1, 0);
@@ -47,7 +47,8 @@ $j(document).ready(function() {
 				},
 				success: function(doc) {
 					var events = [];
-					$(doc.message).each(function() { console.log('this',$(this)[0].title);
+					$(doc.message).each(function() { 
+	//					console.log('this',$(this)[0].title);
 						events.push({
 							title: $(this)[0].title,
 							start: $(this)[0].start// will be parsed
@@ -187,13 +188,15 @@ body {
 						<caption>SUBS AVAILABLE</caption>
 						<thead>
 						 	<tr>
-								<th>Name</th>														
+								<th>Name</th>	
+								<th>End Date</th>														
 						  	</tr>
 						</thead>
 						<tbody>
 							{% for list in subs -%}	
 				  			<tr>
-								<td>{{ list['name'] }}</td>													
+								<td>{{ list['s.name'] }}</td>
+								<td>{{ list['t.exp_end_date'] }}</td>													
 				  			</tr>	
 				  			{%- endfor %}    			  		
 						</tbody>
