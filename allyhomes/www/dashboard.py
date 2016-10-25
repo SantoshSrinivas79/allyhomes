@@ -7,26 +7,17 @@ from frappe import msgprint
 
 def get_context(context):
 	context.no_cache = True
-#	return { "doc": frappe.get_doc("About Us Settings", "About Us Settings") }
-	
-	
-#		kdemail = frappe.db.get_value("Events",{"first_name":kd_name},"email")	
-#		kd_warehouse = frappe.db.get_value("Warehouse",{"owner":kdemail},"name")
+#	context.sub = frappe.db.sql("""select name, status as date from `tabSupplier` """,as_dict=1)
 	context.so_list = frappe.db.sql(""" select name,customer,rounded_total as Total,delivery_date from `tabSales Order` order by delivery_date asc""",as_dict=1)
-	context.subs = frappe.db.sql(""" select s.name,t.exp_end_date from `tabSupplier` s left join `tabTask` t on s.name=t.supplier and t.status !='Closed' order by exp_end_date asc""",as_dict=1)
+	context.sub = frappe.db.sql("""select s.name as name,t.exp_end_date as date from `tabSupplier` s left join `tabTask` t on s.name=t.supplier and t.status !='Closed' order by exp_end_date asc""",as_dict=1)
+	
+	print context.sub
 	
 	
-		
-@frappe.whitelist(allow_guest=False)  # By Rakhi
+@frappe.whitelist(allow_guest=False)
 def get_events(start,end):	
 	no_cache = True
-#	kdemail = frappe.db.get_value("Events",{"first_name":kd_name},"email")	
-#	kd_warehouse = frappe.db.get_value("Warehouse",{"owner":kdemail},"name")
 	event_list = frappe.db.sql("""select description as title, starts_on as start from `tabEvent` where starts_on=%s and ends_on=%s""",format(start,end),as_dict=1)
-#	print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-#	print start
-#	print end
-#	frappe.msgprint(_(start))
 	return event_list
 
 

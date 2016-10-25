@@ -191,16 +191,23 @@ body {
 						<thead>
 						 	<tr>
 								<th>Name</th>	
-								<th>End Date</th>														
+								<th>End Date</th>	
+																				
 						  	</tr>
 						</thead>
 						<tbody>
-							{% for list in subs -%}	
+				<!--			{% for r in sub -%}	
 				  			<tr>
-								<td>{{ list['s.name'] }}</td>
-								<td>{{ list['t.exp_end_date'] }}</td>													
+								<td>{{ r['name'] }}</td>
+								<td>{{ r['date'] }}</td>													
 				  			</tr>	
-				  			{%- endfor %}    			  		
+				  			{%- endfor %}    			-->
+				  			{% for list in sub -%}	
+				  			<tr>
+								<td>{{ list['name'] }}</td>
+								<td>{{ list['date'] }}</td>													
+				  			</tr>	
+				  			{%- endfor %}    		
 						</tbody>
 					</table>
 					</div>
@@ -210,4 +217,7 @@ body {
 </div>
 </body>
 
+<script>
+	{% include "templates/includes/dashboard.js" %}
+</script>
 {% endblock %}
