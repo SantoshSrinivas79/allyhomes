@@ -22,7 +22,8 @@
 	var date = new Date(), year = date.getFullYear(), month = date.getMonth();
 	var firstDay = new Date(year, month, 1);
 	var lastDay = new Date(year, month + 1, 0);
-
+//	var today = new Date();
+//	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 	
 	$j('#calendar').fullCalendar({        
 		header: {
@@ -30,7 +31,8 @@
 			center: 'title',
 			right: 'month,basicWeek,basicDay'
 		},
-		defaultDate: '2016-09-08',
+		
+		defaultDate: date,
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events
 		events: function(start, end, timezone, callback) {
