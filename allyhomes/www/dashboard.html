@@ -18,11 +18,12 @@
 
 <script>
 	var $j = jQuery.noConflict();
-$j(document).ready(function() {
+	$j(document).ready(function() {
 	var date = new Date(), year = date.getFullYear(), month = date.getMonth();
 	var firstDay = new Date(year, month, 1);
 	var lastDay = new Date(year, month + 1, 0);
-
+//	var today = new Date();
+//	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 	
 	$j('#calendar').fullCalendar({        
 		header: {
@@ -30,7 +31,8 @@ $j(document).ready(function() {
 			center: 'title',
 			right: 'month,basicWeek,basicDay'
 		},
-		defaultDate: '2016-09-08',
+		
+		defaultDate: date,
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events
 		events: function(start, end, timezone, callback) {
@@ -47,7 +49,8 @@ $j(document).ready(function() {
 				},
 				success: function(doc) {
 					var events = [];
-					$(doc.message).each(function() { console.log('this',$(this)[0].title);
+					$(doc.message).each(function() { 
+	//					console.log('this',$(this)[0].title);
 						events.push({
 							title: $(this)[0].title,
 							start: $(this)[0].start// will be parsed
@@ -187,15 +190,24 @@ body {
 						<caption>SUBS AVAILABLE</caption>
 						<thead>
 						 	<tr>
-								<th>Name</th>														
+								<th>Name</th>	
+								<th>End Date</th>	
+																				
 						  	</tr>
 						</thead>
 						<tbody>
-							{% for list in subs -%}	
+				<!--			{% for r in sub -%}	
 				  			<tr>
-								<td>{{ list['name'] }}</td>													
+								<td>{{ r['name'] }}</td>
+								<td>{{ r['date'] }}</td>													
 				  			</tr>	
-				  			{%- endfor %}    			  		
+				  			{%- endfor %}    			-->
+				  			{% for list in sub -%}	
+				  			<tr>
+								<td>{{ list['name'] }}</td>
+								<td>{{ list['date'] }}</td>													
+				  			</tr>	
+				  			{%- endfor %}    		
 						</tbody>
 					</table>
 					</div>
@@ -205,4 +217,7 @@ body {
 </div>
 </body>
 
+<script>
+	{% include "templates/includes/dashboard.js" %}
+</script>
 {% endblock %}
