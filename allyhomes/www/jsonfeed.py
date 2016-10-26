@@ -20,10 +20,10 @@ def get_events(start, end, filters=None):
 	}'''
 	
 	condition = ''
-	values = {
-		"start_date": get_datetime_str(start),
-		"end_date": get_datetime_str(end)
-	}
+#	values = {
+#		"start_date": get_datetime_str(start),
+#		"end_date": get_datetime_str(end)
+#	} 
 
 	#frappe.throw(_(get_datetime_str(end)))
 	'''data = frappe.db.sql("""select hlist.name, h.holiday_date, h.description
