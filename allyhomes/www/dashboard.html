@@ -141,13 +141,14 @@ body {
 	margin: 0 auto;
 }
 .table-dash tbody{
-	height: 378px;  
-	overflow-y: scroll; 
+	height: 310px;  
+	overflow-y: scroll;	
 	display:block;
 }
-.table-dash thead{
+.table-dash thead {
 	display:block;
 }
+
 </style>
 </head>
 
@@ -155,16 +156,17 @@ body {
 <div class="sections">
 	<div class="container-fluid">
 		<div class="row">	
+			
 			<div class="col-sm-4">
 				<div class="panel panel-default">
 					<table class="table table-hover table-dash">
 						<caption>AGING REPORT</caption>
 						<thead>
 						 	<tr>
-								<th>Name</th>
-								<th>Customer</th>
-								<th>Amount</th>
-								<th>Delivery Date</th>							
+								<th class="col-xs-2">Name</th>
+								<th class="col-xs-2">Customer</th>
+								<th class="col-xs-4">Amount</th>
+								<th class="col-xs-4">Delivery Date</th>							
 						  	</tr>
 						</thead>
 						<tbody>
@@ -180,28 +182,23 @@ body {
 					</table>
 				</div>
 			</div>		
-        	<div class="col-sm-6">
+			
+        	<div class="col-sm-5">
             	<div id="calendar"></div>
         	</div>
         
-        	<div class="col-sm-2">	
+        	<div class="col-sm-3">	
 				<div class="panel panel-default">							
-				<table class="table table-hover table-dash">
+					<table class="table table-hover table-dash">
 						<caption>SUBS AVAILABLE</caption>
 						<thead>
 						 	<tr>
-								<th>Name</th>	
-								<th>End Date</th>	
+								<th class="col-xs-6">Name</th>	
+								<th class="col-xs-6">End Date</th>	
 																				
 						  	</tr>
 						</thead>
-						<tbody>
-				<!--			{% for r in sub -%}	
-				  			<tr>
-								<td>{{ r['name'] }}</td>
-								<td>{{ r['date'] }}</td>													
-				  			</tr>	
-				  			{%- endfor %}    			-->
+						<tbody>			
 				  			{% for list in sub -%}	
 				  			<tr>
 								<td>{{ list['name'] }}</td>
@@ -210,14 +207,15 @@ body {
 				  			{%- endfor %}    		
 						</tbody>
 					</table>
-					</div>
+				</div>
 			</div>
+			
     	</div>
     </div>
 </div>
 </body>
 
-<script>
+<!--<script>
 	{% include "templates/includes/dashboard.js" %}
-</script>
+</script> -->
 {% endblock %}
