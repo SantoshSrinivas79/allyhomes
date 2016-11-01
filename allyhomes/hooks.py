@@ -84,13 +84,14 @@ app_license = "MIT"
 # 		"on_trash": "method"
 #	}
 # }
-doc_events = {
-	"Sales Order": {
-		"validate": "erpnext.selling.doctype.sales_order.sales_order.make_amount_constant",
+#doc_events = {
+#	"Sales Order": {
+#		"validate": "erpnext.selling.doctype.sales_order.sales_order.make_amount_constant",
 #		"on_submit": "erpnext.selling.doctype.sales_order.sales_order.make_amount_constant"
 #		"on_cancel": "erpnext.stock.doctype.material_request.material_request.update_completed_and_requested_qty"
-	}
-}
+#	}
+#}
+
 # Scheduled Tasks
 # ---------------
 
