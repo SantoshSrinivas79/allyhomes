@@ -84,6 +84,12 @@ app_license = "MIT"
 # 		"on_trash": "method"
 #	}
 # }
+doc_events = {
+	"Sales Order": {
+		"on_submit": "allyhomes.custom_method.create_project"
+				
+	}
+}
 #doc_events = {
 #	"Sales Order": {
 #		"validate": "erpnext.selling.doctype.sales_order.sales_order.make_amount_constant",
