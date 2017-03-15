@@ -28,3 +28,28 @@ def create_todo(owner, assigned_by, description, date,reference_name,reference_t
 	todo.reference_type = reference_type
 	todo.reference_name = reference_name
 	todo.insert(ignore_permissions=True)
+
+
+
+@frappe.whitelist()
+def create_project(self, method):
+
+	project = frappe.new_doc("Project")
+	
+	project.project_name = self.customer + " - "+ self.name
+	project.owner = self.owner
+	project.expected_start_date = self.transaction_date
+	project.expected_end_date = self.delivery_date 
+	project.customer = self.customer
+	project.sales_order = self.name
+	
+	soitem = []
+
+	# frappe.msgprint(frappe.__islocal)
+	for value in self.get("items"):
+			
+			task = frappe.new_doc("Task")
+			task.subject = value.item_code
+			
+			frappe.msgprint(value.item_code)
+	project.insert(ignore_permissions=True)
