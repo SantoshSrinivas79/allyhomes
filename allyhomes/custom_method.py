@@ -43,13 +43,9 @@ def create_project(self, method):
 	project.customer = self.customer
 	project.sales_order = self.name
 	
-	soitem = []
-
-	# frappe.msgprint(frappe.__islocal)
+	project.insert(ignore_permissions=True)
 	for value in self.get("items"):
-			
 			task = frappe.new_doc("Task")
 			task.subject = value.item_code
-			
-			frappe.msgprint(value.item_code)
-	project.insert(ignore_permissions=True)
+			task.project = project.name
+			task.insert(ignore_permissions=True)
