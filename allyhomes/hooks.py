@@ -29,6 +29,11 @@ app_license = "MIT"
 #	"/assets/allyhomes/js/moment.min.js"
 #]
 
+fixtures = ["Custom Field",
+"Property Setter",
+"Custom Script",
+"Print Format"]
+
 # Home Pages
 # ----------
 
