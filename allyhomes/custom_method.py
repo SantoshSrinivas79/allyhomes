@@ -27,6 +27,7 @@ def create_todo(owner, assigned_by, description, date,reference_name,reference_t
 	todo.date = date
 	todo.reference_type = reference_type
 	todo.reference_name = reference_name
+	todo.role = "Sales User"
 	todo.insert(ignore_permissions=True)
 
 
