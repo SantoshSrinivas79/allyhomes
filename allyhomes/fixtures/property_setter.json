@@ -1912,13 +1912,13 @@
   "doc_type": "Interaction Master", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2017-04-20 08:17:25.510715", 
-  "name": "Interaction Master-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
+  "doctype_or_field": "DocField", 
+  "field_name": "type_of_interaction", 
+  "modified": "2017-04-20 08:17:25.548750", 
+  "name": "Interaction Master-type_of_interaction-options", 
+  "property": "options", 
+  "property_type": "Text", 
+  "value": "\nEmail\nCall\nFollow Up Call\nDemo\nEmail Contract"
  }, 
  {
   "_assign": null, 
@@ -1929,12 +1929,12 @@
   "doc_type": "Interaction Master", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
-  "doctype_or_field": "DocField", 
-  "field_name": "type_of_interaction", 
-  "modified": "2017-04-20 08:17:25.548750", 
-  "name": "Interaction Master-type_of_interaction-options", 
-  "property": "options", 
-  "property_type": "Text", 
-  "value": "\nEmail\nCall\nFollow Up Call\nDemo\nEmail Contract"
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2017-04-20 09:06:43.920921", 
+  "name": "Interaction Master-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
  }
 ]
